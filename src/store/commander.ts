@@ -154,13 +154,8 @@ const commanderInit = () => {
           });
           if (note && note.length < maxLength) {
             // Save the log to the ledger
-            let confirm = await Interact.confirm("Add Note?", note.substr(0, maxLength));
-            if (confirm === true) {
-              let saving = await LedgerStore.saveLog(log);
+            let saving = await LedgerStore.saveLog(log);
               return saving;
-            } else {
-              return false;
-            }
           } else if (note.length >= maxLength) {
             Interact.alert("Error", `Note exceeds ${maxLength} characters`);
           } else {
